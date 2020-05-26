@@ -135,5 +135,10 @@ module Etsy
       @bought_listings
     end
 
+    def receipts
+      @receipts ||= Receipt.find_all_by_user_id(id, { access_token: token, access_secret: secret })
+
+      @receipts
+    end
   end
 end

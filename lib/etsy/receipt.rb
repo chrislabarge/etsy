@@ -23,6 +23,10 @@ module Etsy
       get_all("/shops/#{shop_id}/receipts/#{status}", options)
     end
 
+    def self.find_all_by_user_id(user_id, options = {})
+      get_all("/users/#{user_id}/receipts", options)
+    end
+
     def created_at
       Time.at(created)
     end
@@ -39,6 +43,5 @@ module Etsy
       end
       @transactions
     end
-
   end
 end
