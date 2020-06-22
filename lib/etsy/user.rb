@@ -135,8 +135,9 @@ module Etsy
       @bought_listings
     end
 
-    def receipts
-      @receipts ||= Receipt.find_all_by_user_id(id, { access_token: token, access_secret: secret })
+    #  TODO : should i accept options?
+    def receipts(limit: 25)
+      @receipts ||= Receipt.find_all_by_user_id(id, { access_token: token, access_secret: secret, limit: limit })
 
       @receipts
     end
