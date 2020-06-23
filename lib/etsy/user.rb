@@ -16,8 +16,7 @@ module Etsy
     attribute :username, :from => :login_name
     attribute :email, :from => :primary_email
     attribute :created, :from => :creation_tsz
-
-    association :profile, :from => 'Profile'
+association :profile, :from => 'Profile'
     association :shops, :from => 'Shops'
     association :bill_charges, :from => 'BillCharges'
     association :bill_payments, :from => 'BillPayments'
@@ -136,8 +135,8 @@ module Etsy
     end
 
     #  TODO : should i accept options?
-    def receipts(limit: 25)
-      @receipts ||= Receipt.find_all_by_user_id(id, { access_token: token, access_secret: secret, limit: limit })
+    def receipts(limit: 25, offset: 0)
+      @receipts ||= Receipt.find_all_by_user_id(id, { access_token: token, access_secret: secret, limit: limit, offset: offset })
 
       @receipts
     end
